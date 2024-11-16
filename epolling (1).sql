@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2024 at 04:48 AM
+-- Generation Time: Nov 16, 2024 at 05:14 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,8 +53,17 @@ INSERT INTO `calon` (`id`, `nomor`, `nama`, `wakil`, `foto`) VALUES
 CREATE TABLE `suara` (
   `id` int(11) NOT NULL,
   `calon_id` int(11) NOT NULL,
-  `suara` int(11) NOT NULL
+  `tps_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `suara`
+--
+
+INSERT INTO `suara` (`id`, `calon_id`, `tps_id`) VALUES
+(0, 1, 1),
+(0, 3, 2),
+(0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -73,10 +82,11 @@ CREATE TABLE `tps` (
 --
 
 INSERT INTO `tps` (`id`, `nomor`, `status`) VALUES
-(1, 1, 1),
-(2, 2, 1),
+(1, 1, 0),
+(2, 2, 0),
 (3, 3, 0),
-(4, 4, 0);
+(4, 4, 0),
+(5, 5, 0);
 
 -- --------------------------------------------------------
 
@@ -125,7 +135,8 @@ ALTER TABLE `calon`
 -- Indexes for table `suara`
 --
 ALTER TABLE `suara`
-  ADD KEY `calon_id` (`calon_id`);
+  ADD KEY `calon_id` (`calon_id`),
+  ADD KEY `tps_id` (`tps_id`);
 
 --
 -- Indexes for table `tps`
@@ -154,7 +165,7 @@ ALTER TABLE `calon`
 -- AUTO_INCREMENT for table `tps`
 --
 ALTER TABLE `tps`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `visi`
@@ -170,7 +181,8 @@ ALTER TABLE `visi`
 -- Constraints for table `suara`
 --
 ALTER TABLE `suara`
-  ADD CONSTRAINT `suara_ibfk_1` FOREIGN KEY (`calon_id`) REFERENCES `calon` (`id`);
+  ADD CONSTRAINT `suara_ibfk_1` FOREIGN KEY (`calon_id`) REFERENCES `calon` (`id`),
+  ADD CONSTRAINT `suara_ibfk_2` FOREIGN KEY (`tps_id`) REFERENCES `tps` (`id`);
 
 --
 -- Constraints for table `visi`
