@@ -90,7 +90,7 @@ if (str_starts_with($last, 'calon')) {
                             class="nav-link px-2 <?= $menu == 'tps' ? 'active' : 'text-white' ?>">TPS</a></li>
 
                     <li><a href="<?= url_dasar_admin() . 'polling_suara.php' ?>"
-                            class="nav-link px-2 <?= $menu == 'polling_suara' ? 'active' : 'text-white' ?>">Polling
+                            class="nav-link px-2 <?= $menu == 'polling_suara' ? 'active' : 'text-white' ?>" onclick="return confirm('Apa proses pemilihan suara sudah selesai ?')">Polling
                             Suara</a></li>
                 </ul>
 
